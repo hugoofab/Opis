@@ -1,6 +1,6 @@
 {
     "name": "hugo/opis",
-    "description": "Classes uteis",
+    "description": "classes uteis",
     "type": "library",
     "license": "GNU",
     "authors": [
@@ -9,5 +9,6 @@
             "email": "hugoofab@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {}
 }
