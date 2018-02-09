@@ -1,0 +1,13 @@
+{
+    "name": "hugo/opis",
+    "description": "Classes uteis",
+    "type": "library",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Hugo Ferreira",
+            "email": "hugoofab@gmail.com"
+        }
+    ],
+    "require": {}
+}

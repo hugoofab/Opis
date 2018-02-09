@@ -32,10 +32,9 @@ class Opis_ImageThumbNail {
 	public $maxWidth = 2048 ;
 	public $maxHeight = 1556 ;
 
-
 	public static function Create ( $filename , $newxsize = 60 , $newysize = 60 , $fileout ) {
 
-		$thumb = new Opis_ImageThumbNail ( $filename , $newxsize , $newysize , $fileout );
+		$thumb = new self ( $filename , $newxsize , $newysize , $fileout );
 
 		if ( !file_exists ( $fileout ) ) return false ;
 
