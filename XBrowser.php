@@ -62,6 +62,11 @@ class Opis_XBrowser {
 	protected $postVars = array ( );
 
 	/**
+	 * body to send	
+	*/
+	protected $body = "";
+
+	/**
 	 * usado para upload de arquivos, não implementado ainda
 	 */
 	// protected $fileVars = array ( );
@@ -116,6 +121,12 @@ class Opis_XBrowser {
 		return $this;
 	}
 
+
+	public function setBody ( $bodyText ) {
+		$this->body = $bodyText;
+		return $this;
+	}
+
 	/**
 	 * Adiciona um par de chave => valor ao post
 	 * @param string $key   chave, nome da variável post
@@ -123,7 +134,9 @@ class Opis_XBrowser {
 	 */
 	public function addPost ( $key , $value ) {
 		$this->headers[CURLOPT_POST] = 1 ;
-		$this->postVars[$key]        = $value ;
+		if ( !empty ( $key ) ) {
+			$this->postVars[$key]        = $value ;
+		}
 		return $this ;
 	}
 
@@ -147,13 +160,16 @@ class Opis_XBrowser {
 	public function send ( ) {
 
 		$ch = curl_init ( $this->url ) ;
-pr($this->headers);
+
+		if ( !empty ( $this->body ) ) {
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $this->body ); 
+		}
 
 		foreach ( $this->headers as $key => $value ) {
-			echo $key . "<br>";
-			echo $value . "<br>";
+			// echo $key . "<br>";
+			// echo $value . "<br>";
 
-			pr(gettype ( $key ));
+			// pr(gettype ( $key ));
 			// if ( gettype ( $key ) )
 			curl_setopt ( $ch , $key , $value ) ;
 		}

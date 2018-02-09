@@ -36,6 +36,23 @@ class Opis_Response {
 
 	public function __toString ( ) {
 
+<<<<<<< HEAD
+        if ( isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') && ob_get_length() == 0 ) {
+            ini_set('zlib.output_compression', 'on');
+            header('Content-Encoding:gzip');
+        }
+
+        header("Content-Type:application/json; charset=utf-8");
+        // header("Content-Type:application/json");
+
+		switch ($this->outputType) {
+			case 'json':
+				return Opis_Json::encode( $this->response );
+			break;
+			default:
+		}
+
+=======
 		try {
 
 	        if ( isset($_SERVER['HTTP_ACCEPT_ENCODING']) && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') && ob_get_length() == 0 ) {
@@ -57,7 +74,7 @@ class Opis_Response {
 			die($e->getMessage());
 		}
 		
+>>>>>>> 9c997120d9eb6374e736274071270ba698bbe065
 	}
 
 }
-
