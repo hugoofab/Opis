@@ -116,7 +116,7 @@ class Opis_ImageThumbNail {
 */
 	private function NewImgCreate($filename,$newxsize,$newysize,$fileout)
 	{
-		echo "<pre>";
+
 		$imageInfo = getimagesize ( $filename );
 		
 		$width = $imageInfo[0];

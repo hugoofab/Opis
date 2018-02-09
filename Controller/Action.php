@@ -9,7 +9,8 @@
 abstract class Opis_Controller_Action extends Zend_Controller_Action {
 
     protected $isPublic = true ;
-    protected $request ;
+    protected $Request ;
+    protected $Response ;
 
 //    public function __construct ( Zend_Controller_Request_Abstract $request , Zend_Controller_Response_Abstract $response , array $invokeArgs = array ( ) ) {
 //
@@ -30,8 +31,9 @@ abstract class Opis_Controller_Action extends Zend_Controller_Action {
     public function preDispatch ( ) {
 
 		$this->view->controllerName = $this->_request->getControllerName ( ) ;
-		$this->request = new Zend_Controller_Request_Http ( ) ;
-		
+		$this->Request = new Zend_Controller_Request_Http ( ) ;
+		$this->Response = new Opis_Response ();
+
         $request = $this->getRequest () ;
         $ModelUsuario = new Model_Usuario ( ) ;
 
@@ -55,6 +57,13 @@ abstract class Opis_Controller_Action extends Zend_Controller_Action {
 
     }
 
+    public function postDispatch ( ) {
+    	// evitar postar novamente os mesmos dados
+    	// isso pode dar problemas em sistemas legados e deve ficar em observação
+    	// if ( !empty ( $_POST ) || !empty ( $_FILES ) ) {
+    		// redirect($_SERVER['REQUEST_URI']);
+    	// }
+    }
 
     public function setLogotipoImage ( ) {
     	
